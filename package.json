@@ -1,0 +1,39 @@
+{
+  "name": "maplicate-core",
+  "version": "0.1.0",
+  "description": "library for collaborative map editing on IFPS",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "lint-staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maplicate/maplicate-core.git"
+  },
+  "author": "Haoliang Yu <haholiang.yu@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Maplicate/maplicate-core/issues"
+  },
+  "homepage": "https://github.com/Maplicate/maplicate-core#readme",
+  "dependencies": {
+    "ipfs": "^0.31.2",
+    "orbit-db": "^0.19.9"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.14.0",
+    "rollup": "^0.63.5",
+    "rollup-plugin-typescript": "^0.8.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.1"
+  },
+  "lint-staged": {
+    "*.{d.ts,ts,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
