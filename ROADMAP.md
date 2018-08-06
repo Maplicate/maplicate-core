@@ -38,6 +38,16 @@ The class should have the following properties:
 
   The IPFS node address that the current node is using.
 
+### Methods
+
+* `add(feature: GeoJSON): Promise<string>`
+
+* `update(feature: GeoJSON): Promise`
+
+* `delete(id: string): Promise`
+
+* `get(id: string): Promise<IFeature>`
+
 ### Events
 
 The class should have the following events:
@@ -56,15 +66,15 @@ The class should have the following events:
 
 * `featureCreated`
 
-  Indicates a map feature is created.
+  Indicates a map feature is created. The feature is emitted as the event data.
 
 * `featureEdited`
 
-  Indicates a map feature is edited.
+  Indicates a map feature is edited. The feature is emitted as the event data.
 
 * `featureDeleted`
 
-  Indicates a map feature is deleted.
+  Indicates a map feature is deleted. The feature is emitted as the event data.
 
 The `MaplicateNode` is also an [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) class so these evnets are accessible with:
 
@@ -84,4 +94,27 @@ node.off('featureCreated', (feature: IFeature) => {
 
 ## `IFeature` Interface
 
-An `Feature` object represents a map feature.
+An `Feature` object represents a map feature in the network.
+
+``` javascript
+{
+  "_hash": "content_hash",
+  "_id": "feature_id",
+  "geometry": {},
+  "properties": {}
+}
+```
+
+`geometry` and `properties` are standard GeoJSON properties.
+
+`_hash` is a MD5 hash string calculated with the following logic:
+
+``` javascript
+const md5 = require('md5');
+const geoHash = md5(JSON.stringify(feature.geometry));
+const propHash = md5(JSON.stringify(feature.properties));
+
+feature._hash = md5(geoHash + propHash);
+```  
+
+`_id` is a unique id across for this feature.
