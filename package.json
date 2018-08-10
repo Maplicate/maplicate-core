@@ -18,8 +18,6 @@
   },
   "homepage": "https://github.com/Maplicate/maplicate-core#readme",
   "dependencies": {
-    "eventemitter3": "^3.1.0",
-    "ipfs": "^0.31.2",
     "orbit-db": "^0.19.9"
   },
   "devDependencies": {

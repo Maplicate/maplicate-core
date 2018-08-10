@@ -30,13 +30,9 @@ const nodeB = maplicate.join(ipfs, address);
 
 The class should have the following properties:
 
-* `networkAddress`
+* `mapAddress`
 
   The network address of the maplicate network.
-
-* `ipfsAddress`
-
-  The IPFS node address that the current node is using.
 
 ### Methods
 
@@ -115,6 +111,6 @@ const geoHash = md5(JSON.stringify(feature.geometry));
 const propHash = md5(JSON.stringify(feature.properties));
 
 feature._hash = md5(geoHash + propHash);
-```  
+```
 
 `_id` is a unique id across for this feature.
