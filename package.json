@@ -18,12 +18,14 @@
   },
   "homepage": "https://github.com/Maplicate/maplicate-core#readme",
   "dependencies": {
-    "orbit-db": "^0.19.9"
+    "orbit-db": "^0.19.9",
+    "shortid": "^2.2.12"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "husky": "^0.14.3",
+    "ipfs": "^0.31.4",
     "lint-staged": "^7.2.0",
     "prettier": "^1.14.0",
     "rollup": "^0.63.5",
