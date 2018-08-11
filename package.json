@@ -37,7 +37,7 @@
     "./dist/index.js": "./dist/browser.js"
   },
   "lint-staged": {
-    "*.{d.ts,ts,json,md}": [
+    "*.{js,json,md}": [
       "prettier --write",
       "git add"
     ]
