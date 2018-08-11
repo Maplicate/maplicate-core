@@ -1,9 +1,11 @@
-import { EventEmitter } from "events";
-import { generate as generateId } from "shortid";
-const OrbitDB = require("orbit-db");
+import EventEmitter from 'events';
+import * as shortid from "shortid";
+import * as OrbitDB from "orbit-db";
 
 export class MaplicateNode extends EventEmitter {
   constructor(ipfs, nameOrAddress) {
+    super();
+    
     this.ready = false;
     this._featureHash = {};
 
@@ -44,7 +46,7 @@ export class MaplicateNode extends EventEmitter {
       copy.properties = {};
     }
 
-    copy._id = generateId();
+    copy._id = shortid.generate();
 
     const hash = await this.store.put(copy);
     this._featureHash[copy._id] = hash;
