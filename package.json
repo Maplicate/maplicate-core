@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "fix": "prettier --write src/**/*.js",
     "precommit": "lint-staged"
   },
   "repository": {
