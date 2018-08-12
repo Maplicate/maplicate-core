@@ -1,11 +1,11 @@
-import EventEmitter from 'eventemitter3';
+import EventEmitter from "eventemitter3";
 import * as OrbitDB from "orbit-db";
-import { generateId } from './util';
+import { generateId } from "./util";
 
 export class MaplicateNode extends EventEmitter {
   constructor(ipfs, nameOrAddress) {
     super();
-    
+
     this.ready = false;
     this._featureHash = {};
 
@@ -103,6 +103,22 @@ export class MaplicateNode extends EventEmitter {
     if (!options.disableEvent) {
       this.emit("featureRemoved", feature);
     }
+  }
+
+  async close() {
+    if (!this.store) {
+      return;
+    }
+
+    await this.store.close();
+  }
+
+  async drop() {
+    if (!this.store) {
+      return;
+    }
+
+    await this.store.drop();
   }
 
   _handleProgress(address, hash, entry) {
