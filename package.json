@@ -10,7 +10,7 @@
     "build:browser": "BROWSER=true rollup -c rollup/rollup.config.browser.js > dist/browser.js",
     "fix": "prettier --write src/**/*.js",
     "precommit": "lint-staged",
-    "prepublish": "build"
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
