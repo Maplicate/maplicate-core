@@ -23,7 +23,6 @@
   },
   "homepage": "https://github.com/Maplicate/maplicate-core#readme",
   "dependencies": {
-    "@babel/polyfill": "^7.0.0-rc.1",
     "eventemitter3": "^3.1.0",
     "nanoid": "^1.2.0",
     "orbit-db": "^0.19.9"
