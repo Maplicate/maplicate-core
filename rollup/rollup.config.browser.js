@@ -4,6 +4,7 @@ import babel from 'rollup-plugin-babel';
 import json from 'rollup-plugin-json';
 import { plugin as analyze } from 'rollup-plugin-analyzer';
 import { terser } from "rollup-plugin-terser";
+import replace from 'rollup-plugin-replace';
 
 export default {
   input: 'src/index.js',
@@ -18,6 +19,7 @@ export default {
     }),
     commonjs(),
     json(),
+    replace({ 'process.browser': !!process.env.BROWSER }),
     babel({
       babelrc: false,
       presets: [

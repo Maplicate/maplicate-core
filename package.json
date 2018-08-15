@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run build:node && npm run build:browser",
     "build:node": "make-dir dist && rollup -c rollup/rollup.config.node.js > dist/node.js",
-    "build:browser": "make-dir dist && rollup -c rollup/rollup.config.browser.js > dist/browser.js",
+    "build:browser": "make-dir dist && BROWSER=true rollup -c rollup/rollup.config.browser.js > dist/browser.js",
     "fix": "prettier --write src/**/*.js",
     "precommit": "lint-staged",
     "prepublish": "npm run build"
@@ -43,6 +43,7 @@
     "rollup-plugin-commonjs": "^9.1.5",
     "rollup-plugin-json": "^3.0.0",
     "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-terser": "^1.0.1"
   },
   "browser": "dist/browser.js",
