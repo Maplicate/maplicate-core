@@ -36,7 +36,7 @@ export default {
       plugins: ["external-helpers"],
       exclude: 'node_modules/**'
     }),
-    terser(),
+    // terser(),
     analyze()
   ],
   external: dependencies
