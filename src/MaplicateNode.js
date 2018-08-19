@@ -1,6 +1,6 @@
 import EventEmitter from "eventemitter3";
 import * as OrbitDB from "orbit-db";
-import { generateId } from "./util";
+import { generateId, copy } from "./util";
 
 export class MaplicateNode extends EventEmitter {
   constructor(ipfs, nameOrAddress) {
@@ -40,22 +40,24 @@ export class MaplicateNode extends EventEmitter {
       throw new Error("map not ready");
     }
 
-    const copy = this._copy(feature);
+    const featureCopy = copy(feature);
 
-    if (!copy.properties) {
-      copy.properties = {};
+    if (!featureCopy.properties) {
+      featureCopy.properties = {};
     }
 
-    copy._id = generateId();
+    if (!featureCopy._id) {
+      featureCopy._id = generateId();
+    }
 
-    const hash = await this.store.put(copy);
+    const hash = await this.store.put(featureCopy);
     this._featureHash[copy._id] = hash;
 
     if (!options.disableEvent) {
-      this.emit("featureAdded", copy);
+      this.emit("featureAdded", featureCopy);
     }
 
-    return copy._id;
+    return featureCopy._id;
   }
 
   async update(id, feature, options = { disableEvent: false }) {
@@ -67,19 +69,19 @@ export class MaplicateNode extends EventEmitter {
       throw new Error("feature not exists");
     }
 
-    const copy = this._copy(feature);
+    const featureCopy = copy(feature);
 
-    if (!copy.properties) {
-      copy.properties = {};
+    if (!featureCopy.properties) {
+      featureCopy.properties = {};
     }
 
-    copy._id = generateId();
+    featureCopy._id = id;
 
-    const hash = await this.store.put(copy);
-    this._featureHash[copy._id] = hash;
+    const hash = await this.store.put(featureCopy);
+    this._featureHash[featureCopy._id] = hash;
 
     if (!options.disableEvent) {
-      this.emit("featureUpdated", copy);
+      this.emit("featureUpdated", featureCopy);
     }
   }
 
@@ -123,18 +125,16 @@ export class MaplicateNode extends EventEmitter {
 
   _handleProgress(address, hash, entry) {
     const id = entry.payload.key;
-    const feature = this._copy(entry.payload.value);
+    const feature = copy(entry.payload.value);
 
-    if (!this._featureHash[id]) {
+    if (!feature) {
+      this.emit("featureRemoved", { _id: id })
+    } else if (!this._featureHash[id]) {
       this.emit("featureAdded", feature);
     } else if (this._featureHash[id] !== hash) {
       this.emit("featureUpdated", feature);
     }
 
     this._featureHash[id] = hash;
-  }
-
-  _copy(geojson) {
-    return JSON.parse(JSON.stringify(geojson));
   }
 }
