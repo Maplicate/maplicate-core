@@ -1,6 +1,6 @@
 import { MaplicateNode } from "./MaplicateNode";
 
-export MaplicateNode;
+export { MaplicateNode };
 
 // if (process.browser) {
 //   module.exports = { MaplicateNode }
