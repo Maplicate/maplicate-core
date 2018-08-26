@@ -5,6 +5,7 @@ import json from 'rollup-plugin-json';
 import { plugin as analyze } from 'rollup-plugin-analyzer';
 import { terser } from "rollup-plugin-terser";
 import replace from 'rollup-plugin-replace';
+import globals from 'rollup-plugin-node-globals';
 
 export default {
   input: 'src/index.js',
@@ -14,6 +15,7 @@ export default {
   treeshake: true,
   plugins: [
     resolve({
+      jsnext: true,
       browser: true,
       preferBuiltins: true
     }),
@@ -33,6 +35,7 @@ export default {
       plugins: ["external-helpers"],
       exclude: 'node_modules/**'
     }),
+    globals(),
     terser(),
     analyze()
   ]
