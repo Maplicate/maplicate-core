@@ -15,7 +15,7 @@ export default {
   treeshake: true,
   plugins: [
     resolve({
-      jsnext: true,
+      // jsnext: true,
       browser: true,
       preferBuiltins: true
     }),
