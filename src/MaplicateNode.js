@@ -1,15 +1,12 @@
 import EventEmitter from "eventemitter3";
-import * as OrbitDB from "orbit-db";
 import { generateId, copy } from "./util";
 
 export class MaplicateNode extends EventEmitter {
-  constructor(ipfs, nameOrAddress) {
+  constructor(orbitdb, nameOrAddress) {
     super();
 
     this.ready = false;
     this._featureHash = {};
-
-    const orbitdb = new OrbitDB(ipfs);
 
     orbitdb
       .docstore(nameOrAddress)
