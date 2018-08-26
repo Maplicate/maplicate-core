@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:node": "make-dir dist && rollup -c rollup/rollup.config.node.js > dist/node.js",
-    "build:browser": "make-dir dist && BROWSER=true rollup -c rollup/rollup.config.browser.js > dist/browser.js",
+    "build:browser": "make-dir dist && BROWSER=true rollup -c rollup/rollup.config.browser.js > dist/browser.bundle.js",
     "fix": "prettier --write src/**/*.js",
     "precommit": "lint-staged"
   },
