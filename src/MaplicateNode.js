@@ -32,6 +32,10 @@ export class MaplicateNode extends EventEmitter {
     return this.store.address;
   }
 
+  async get(featureId) {
+    return this.store.get(featureId).map((e) => e.payload.value)[0]
+  }
+
   async add(feature, options = { disableEvent: false }) {
     if (!this.ready) {
       throw new Error("map not ready");
