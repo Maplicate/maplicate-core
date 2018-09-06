@@ -33,7 +33,7 @@ export class MaplicateNode extends EventEmitter {
   }
 
   async get(featureId) {
-    return this.store.get(featureId).map((e) => e.payload.value)[0]
+    return this.store.get(featureId)[0]
   }
 
   async add(feature, options = { disableEvent: false }) {
