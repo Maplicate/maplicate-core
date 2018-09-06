@@ -52,7 +52,7 @@ export class MaplicateNode extends EventEmitter {
     }
 
     const hash = await this.store.put(featureCopy);
-    this._featureHash[copy._id] = hash;
+    this._featureHash[featureCopy._id] = hash;
 
     if (!options.disableEvent) {
       this.emit("featureAdded", featureCopy);
