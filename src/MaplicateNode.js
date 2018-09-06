@@ -98,7 +98,7 @@ export class MaplicateNode extends EventEmitter {
     let feature;
 
     if (!options.disableEvent) {
-      feature = this.store.get(id).map(e => e.payload.value)[0];
+      feature = this.store.get(id)[0];
     }
 
     await this.store.del(id);
