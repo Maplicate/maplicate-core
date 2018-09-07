@@ -63,3 +63,4 @@ typings/
 dist/node.js
 test-app
 docs
+orbitdb
