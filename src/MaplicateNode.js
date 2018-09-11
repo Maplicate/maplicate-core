@@ -7,14 +7,24 @@ import { generateId, copy } from "./util";
  * @param {string}  nameOrAddress maplicate node name or address
  */
 export class MaplicateNode extends EventEmitter {
-  constructor(orbitdb, nameOrAddress) {
+  constructor(orbitdb, nameOrAddress, options = {}) {
     super();
 
     this.ready = false;
     this._featureHash = {};
 
+    const dbOptions = {};
+
+    if (options.readOnly) {
+      dbOptions.access = {};
+    } else {
+      dbOptions.access = {
+        write: ['*']
+      };
+    }
+
     orbitdb
-      .docstore(nameOrAddress)
+      .docstore(nameOrAddress, dbOptions)
       .then(store => {
         this.store = store;
 
