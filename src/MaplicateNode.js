@@ -13,18 +13,18 @@ export class MaplicateNode extends EventEmitter {
     this.ready = false;
     this._featureHash = {};
 
-    const dbOptions = {};
+    let access;
 
     if (options.readOnly) {
-      dbOptions.access = {};
+      access = {};
     } else {
-      dbOptions.access = {
-        write: ['*']
+      access = {
+        write: ["*"]
       };
     }
 
     orbitdb
-      .docstore(nameOrAddress, dbOptions)
+      .docstore(nameOrAddress, access)
       .then(store => {
         this.store = store;
 
