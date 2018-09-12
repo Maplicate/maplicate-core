@@ -28,8 +28,8 @@ export class MaplicateNode extends EventEmitter {
       .then(store => {
         this.store = store;
 
-        this.store.events.on("replicate.progress", this._handleProgress);
-        this.store.events.on("load.progress", this._handleProgress);
+        this.store.events.on("replicate.progress", this._handleProgress.bind(this));
+        this.store.events.on("load.progress", this._handleProgress.bind(this));
 
         return store.load();
       })
