@@ -5,12 +5,12 @@
   "main": "src/index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --timeout 10000 test/**/*.test.js",
-    "build": "npm run build:node && npm run build:browser && npm run build:docs",
+    "build": "npm run build:node && npm run build:browser && npm run build:api-docs",
     "build:node": "make-dir dist && rollup -c rollup/rollup.config.node.js > dist/node.js",
     "build:browser": "make-dir dist && BROWSER=true rollup -c rollup/rollup.config.browser.js > dist/browser.bundle.js",
-    "build:docs": "documentation build src/** -f html -o docs",
-    "lint": "npm run lint:docs",
-    "lint:docs": "documentation lint src/**",
+    "build:api-docs": "documentation build src/** -f html -o api-docs",
+    "lint": "npm run lint:api-docs",
+    "lint:api-docs": "documentation lint src/**",
     "fix": "prettier --write src/**/*.js test/**/*.js",
     "precommit": "lint-staged"
   },

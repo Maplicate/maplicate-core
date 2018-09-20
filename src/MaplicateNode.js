@@ -62,6 +62,15 @@ export class MaplicateNode extends EventEmitter {
   }
 
   /**
+   * Get map features with a given selector function.
+   * @param   {function}  selector  a selector functiion
+   * @returns {Promise}             an array of GeoJSON features
+   */
+  async query(selector) {
+    return this.store.query(selector);
+  }
+
+  /**
    * Add a map feature
    * @param  {Feature}  feature    GeoJSON feature
    * @param  {Object}   [options={}] options
