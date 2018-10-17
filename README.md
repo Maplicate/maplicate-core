@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Maplicate/maplicate-core.svg?branch=master)](https://travis-ci.org/Maplicate/maplicate-core)
 
-**maplicate-core** is a thin layer for [OrbitDB](https://github.com/orbitdb/orbit-db), a distributed peer-to-peer database, with convenient APIs for working with geographic data and mapping library (like [Leaflet](https://leafletjs.com/)). It is designed for building decentralized and offline-first map applications.
+**maplicate-core** is a thin layer on the top of  [OrbitDB](https://github.com/orbitdb/orbit-db), a distributed peer-to-peer database, with convenient APIs for working with geographic data and mapping libraries (like [Leaflet](https://leafletjs.com/)). It is designed for building decentralized and offline-first map applications.
 
 Each maplicate node is an [OrbitDB DocStore](https://github.com/orbitdb/orbit-db-docstore), which provides:
 
@@ -35,6 +35,20 @@ ipfs.on('ready', () => {
 For more details, see the [API documentation](https://maplicate.github.io/maplicate-core/) and [event guide](./docs/events.md).
 
 To see an actual application, please take a look at [Maplicate Editor](https://github.com/Maplicate/maplicate-editor).
+
+## Plan
+
+Maplicate is work in progress. Its goal is to build a highly scalable and distributed map data storage, particularly for machine-generated data. Features on our roadmap:
+
+- [ ] remove the dependency of orbit-db
+- [ ] store data at different locations (local file system, cache, database) via injectable adapters
+- [ ] minimize bandwith requirement for exchanging map edits
+- [ ] offline support
+- [ ] automatic conflict resolve
+- [ ] join multiple maps
+- [ ] user permission control
+- [ ] bootstrap with local data and progressively load additional data
+- [ ] history data retrieval
 
 ## License
 
