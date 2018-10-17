@@ -1,6 +1,6 @@
 # maplicate-core
 
-[![Build Status](https://travis-ci.org/Maplicate/maplicate-core.svg?branch=master)](https://travis-ci.org/Maplicate/maplicate-core)
+[![Build Status](https://travis-ci.org/Maplicate/maplicate-core.svg?branch=master)](https://travis-ci.org/Maplicate/maplicate-core) [![Greenkeeper badge](https://badges.greenkeeper.io/Maplicate/maplicate-core.svg)](https://greenkeeper.io/)
 
 **maplicate-core** is a thin layer for [OrbitDB](https://github.com/orbitdb/orbit-db), a distributed peer-to-peer database, with convenient APIs for working with geographic data and mapping library (like [Leaflet](https://leafletjs.com/)). It is designed for building decentralized and offline-first map applications.
 
